@@ -1,6 +1,7 @@
 var allNums, onesect, k, a, b, currentQ2S, boxId, currentArray, orderId, clicked_id, date, currentDates, allDates, firebase, allQ2s;
 var apikey = config.API_KEY;
-
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 // Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: apikey,
@@ -11,8 +12,7 @@ var firebaseConfig = {
     messagingSenderId: "408544589504",
     appId: "1:408544589504:web:7b1883bd19dc7356"
 };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+
 // Get a reference to the database service
 var database = firebase.database();
 $(window).on("load", function(e) {
