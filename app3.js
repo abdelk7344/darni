@@ -19,32 +19,30 @@ $(document).ready(function() {
 
 
 function showSales() {
-    var ref = database.ref("/sales");
+    var ref2 = database.ref("/quotetosales")
+    ref2.on("value", gotData2, errData2)
+    var ref = database.ref("sales/");
     ref.on("value", gotData, errData)
-
 
 }
 
 function gotData(data) {
     $('.block').remove();
-
+    console.log(allQ2s)
+    console.log(Skeys)
+    console.log()
     var allNums = data.val();
     var keys = Object.keys(allNums);
 
     for (var i = 0; keys.length > i; i++) {
         var k = keys[i]
         var num = allNums[k]
-        // console.log(num)
         var sr = ((num[0] + num[1] + num[2] + num[3] + num[4]) / num.length) * 500
         var pr = ((num[5] + num[6] + num[7] + num[8] + num[9] + num[10] + num[11] + num[12] + num[13] + num[14] + num[15] + num[16] + num[17] + num[18]) / num.length) * 500
         var er = ((num[19] + num[20] + num[21] + num[22] + num[23] + num[24] + num[25] + num[26] + num[27] + num[28]) / num.length) * 500
         var qr = ((num[29] + num[30] + num[31] + num[32] + num[33] + num[34] + num[35] + num[36] + num[37] + num[38] + num[39] + num[40] + num[41] + num[42] + num[43]) / num.length) * 500
         var p = ((num[44] + num[45] + num[46] + num[47] + num[48] + num[49] + num[50] + num[51] + num[52] + num[53] + num[54] + num[55] + num[56] + num[57] + num[58] + num[59]) / num.length) * 500
-        // console.log(sr)
-        // console.log(pr)
-        // console.log(er)
-        // console.log(qr)
-        // console.log(p)
+
         var mother = document.createElement('div');
         mother.id = 'block';
         mother.className = 'block';
@@ -53,7 +51,12 @@ function gotData(data) {
 
 
         var name = document.createElement('p');
-        name.innerHTML = "quote: " + k;
+        if (allQ2s[Skeys[i]] !== 0) {
+            name.innerHTML = allQ2s[Skeys[i]];
+        }
+        else {
+            name.innerHTML = "Q" + k;
+        }
         name.className = 'move'
 
 
@@ -133,5 +136,15 @@ function gotData(data) {
 }
 
 function errData(err) {
+    console.log(err)
+}
+
+function gotData2(data) {
+    allQ2s = data.val()
+    Skeys = Object.keys(allQ2s);
+
+}
+
+function errData2(err) {
     console.log(err)
 }

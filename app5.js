@@ -90,7 +90,8 @@ function reply_click(orginal_clicked) {
             var confirm = prompt("Are you DONE with this order?! Type yes or no");
             if (confirm.toLowerCase() == "yes") {
                 firebase.database().ref("sales/" + clicked_id).remove()
-                var ref3 = database.ref("/quotetosales")
+                firebase.database().ref("quotetosales/" + clicked_id).remove()
+                var ref3 = database.ref("quotetosales/")
                 ref3.on("value", gotData3, errData3)
                 window.location.replace(window.location.pathname + window.location.search + window.location.hash);
             }
