@@ -1,6 +1,6 @@
-var apikey = config.API_KEY;
+// var apikey = config.API_KEY;
 var firebaseConfig = {
-    apiKey: apikey,
+    apiKey: "AIzaSyCvJk4AUvWPmp6WOTEmF460hWKjuNZZKY8",
     authDomain: "darni-b44c7.firebaseapp.com",
     databaseURL: "https://darni-b44c7.firebaseio.com",
     projectId: "darni-b44c7",

@@ -1,9 +1,9 @@
 var allNums, onesect, k, a, b, currentQ2S, boxId, currentArray, orderId, clicked_id, date, currentDates, allDates, firebase, allQ2s;
-var apikey = config.API_KEY;
+// var apikey = config.API_KEY;
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: apikey,
+    apiKey: "AIzaSyCvJk4AUvWPmp6WOTEmF460hWKjuNZZKY8",
     authDomain: "darni-b44c7.firebaseapp.com",
     databaseURL: "https://darni-b44c7.firebaseio.com",
     projectId: "darni-b44c7",
