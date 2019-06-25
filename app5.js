@@ -1,4 +1,4 @@
-var database,allNums, onesect, k, a, b, currentQ2S, boxId, currentArray, orderId, clicked_id, date, currentDates, allDates, firebase, allQ2s;
+var allNums, onesect, k, a, b, currentQ2S, boxId, currentArray, orderId, clicked_id, date, currentDates, allDates, firebase, allQ2s;
 var apikey = config.API_KEY;
 
 // Your web app's Firebase configuration
@@ -14,7 +14,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
-database = firebase.database();
+var database = firebase.database();
 $(window).on("load", function(e) {
    
     showSales()

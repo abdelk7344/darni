@@ -1,6 +1,3 @@
-// Your web app's Firebase configuration
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 var apikey = config.API_KEY;
 var firebaseConfig = {
     apiKey: apikey,
@@ -12,6 +9,7 @@ var firebaseConfig = {
     appId: "1:408544589504:web:7b1883bd19dc7356"
 };
 
+firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
