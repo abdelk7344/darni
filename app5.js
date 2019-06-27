@@ -100,7 +100,9 @@ function reply_click(orginal_clicked) {
 
             }
 
+        
         }
+        showSales()
     }
     else if (($(document.getElementById(boxId)).prop("checked") == false)) {
 
@@ -114,6 +116,9 @@ function reply_click(orginal_clicked) {
             checked += currentArray[i];
         }
         $('#progBar').attr('value', (checked / 60) * 100);
+        
+        showSales()
+        
     }
 }
 
