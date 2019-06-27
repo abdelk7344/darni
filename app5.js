@@ -58,7 +58,7 @@ function showDiv() {
 }
 
 function reply_click(orginal_clicked) {
-    showSales()
+    
     var ref3 = database.ref("/quotetosales")
     ref3.on("value", gotData3, errData3)
     var checked = 0;
@@ -116,6 +116,7 @@ function reply_click(orginal_clicked) {
         }
         $('#progBar').attr('value', (checked / 60) * 100);
     }
+    showSales()
 }
 
 function reply_click_2(clicked_id_2) {
