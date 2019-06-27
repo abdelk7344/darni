@@ -205,6 +205,9 @@ function assignLevel() {
             document.getElementById(i).checked = currentArray[i]
         }
     }
+    else if(level.toLowerCase()=="no"){
+        currentArray[5]=1
+    }
     else {
         alert("I did not understand what you have written down. Please try again.")
         currentArray[5] = 0
