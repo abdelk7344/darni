@@ -58,7 +58,6 @@ function showDiv() {
 }
 
 function reply_click(orginal_clicked) {
-    
     var ref3 = database.ref("/quotetosales")
     ref3.on("value", gotData3, errData3)
     var checked = 0;
@@ -70,8 +69,8 @@ function reply_click(orginal_clicked) {
             assignLevel()
         }
         currentDates[boxId] = date;
-        firebase.database().ref("sales/" + clicked_id).set(currentArray)
-        firebase.database().ref("dates/" + clicked_id).set(currentDates)
+        firebase.database().ref("sales/" + clicked_id).update(currentArray)
+        firebase.database().ref("dates/" + clicked_id).update(currentDates)
         var ref3 = database.ref("/quotetosales")
         ref3.on("value", gotData3, errData3)
         if (boxId == "15") {
@@ -107,8 +106,8 @@ function reply_click(orginal_clicked) {
 
         currentArray[boxId] = 0
         currentDates[boxId] = 0;
-        firebase.database().ref("sales/" + clicked_id).set(currentArray)
-        firebase.database().ref("dates/" + clicked_id).set(currentDates)
+        firebase.database().ref("sales/" + clicked_id).update(currentArray)
+        firebase.database().ref("dates/" + clicked_id).update(currentDates)
         var ref3 = database.ref("/quotetosales")
         ref3.on("value", gotData3, errData3)
         for (i = 0; currentArray.length > i; i++) {
@@ -116,7 +115,6 @@ function reply_click(orginal_clicked) {
         }
         $('#progBar').attr('value', (checked / 60) * 100);
     }
-    showSales()
 }
 
 function reply_click_2(clicked_id_2) {
