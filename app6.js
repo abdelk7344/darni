@@ -60,7 +60,8 @@ $(document).ready(function() {
 });
 
 function reply_click(orginal_clicked) {
-    showSales()
+    currentArray = allNums[clicked_id];
+    currentDates = allDates[clicked_id]
     var checked = 0;
     boxId = orginal_clicked;
     if (($(document.getElementById(boxId)).prop("checked") == true)) {
