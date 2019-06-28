@@ -18,9 +18,6 @@ var database = firebase.database();
 $(window).on("load", function(e) {
     var today = new Date();
     date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
-
-
-
 });
 
 
@@ -57,6 +54,9 @@ function showDiv() {
 }
 $(document).ready(function() {
     showSales()
+    for (var i = 0; currentArray.length > i; i++) {
+        document.getElementById(i).checked = currentArray[i]
+    }
 });
 
 function reply_click(orginal_clicked) {
@@ -108,14 +108,10 @@ function reply_click(orginal_clicked) {
         }
         $('#progBar').attr('value', (checked / 60) * 100);
 
-        
+
 
     }
-    
-    showSales()
-        for (var i = 0; currentArray.length > i; i++) {
-        document.getElementById(i).checked = currentArray[i]
-    }
+
 }
 
 function reply_click_2(clicked_id_2) {
