@@ -71,8 +71,8 @@ function reply_click(orginal_clicked) {
             assignLevel()
         }
         currentDates[boxId] = date;
-        firebase.database().ref("sales/" + clicked_id).update(currentArray)
-        firebase.database().ref("dates/" + clicked_id).update(currentDates)
+        firebase.database().ref("sales/" + clicked_id).set(currentArray)
+        firebase.database().ref("dates/" + clicked_id).set(currentDates)
         if (boxId == "15") {
             getSalesNumber()
         }
@@ -104,8 +104,8 @@ function reply_click(orginal_clicked) {
     else if (($(document.getElementById(boxId)).prop("checked") == false)) {
         currentArray[boxId] = 0
         currentDates[boxId] = 0;
-        firebase.database().ref("sales/" + clicked_id).update(currentArray)
-        firebase.database().ref("dates/" + clicked_id).update(currentDates)
+        firebase.database().ref("sales/" + clicked_id).set(currentArray)
+        firebase.database().ref("dates/" + clicked_id).set(currentDates)
         for (i = 0; currentArray.length > i; i++) {
             checked += currentArray[i];
         }
@@ -150,7 +150,6 @@ function gotData(data) {
     for (var i = 0; keys.length > i; i++) {
         k = keys[i]
         var num = allNums[k]
-        console.log(num)
         if (allQ2s[Skeys[i]] !== 0) {
             $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:white;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + allQ2s[Skeys[i]] + '</button></center>');
         }
