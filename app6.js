@@ -1,4 +1,4 @@
-var allNums, onesect, k, a, b, currentQ2S, boxId, currentArray, orderId, clicked_id, date, currentDates, allDates, firebase, allQ2s;
+var allNums, Skeys, onesect, k, a, b, currentQ2S, boxId, currentArray, orderId, clicked_id, date, currentDates, allDates, firebase, allQ2s;
 // var apikey = config.API_KEY;
 
 // Your web app's Firebase configuration
@@ -16,15 +16,17 @@ firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
 var database = firebase.database();
 $(window).on("load", function(e) {
-
-    showSales()
     var today = new Date();
     date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
-    var ref3 = database.ref("/quotetosales")
-    ref3.on("value", gotData3, errData3)
+
 
 
 });
+
+$(document).ready(function() {
+    showSales()
+});
+
 
 function addSales() {
     var newsale = $("#newSaleNum").val();
@@ -36,12 +38,11 @@ function addSales() {
     firebase.database().ref("quotetosales/" + newsale).set(0)
     console.log(newsale)
     showSales()
-    var ref3 = database.ref("/quotetosales")
-    ref3.on("value", gotData3, errData3)
-
 }
 
 function showSales() {
+    var ref3 = database.ref("/quotetosales")
+    ref3.on("value", gotData3, errData3)
     var ref = database.ref("/sales");
     var ref2 = database.ref("/dates")
     ref2.on("value", gotData2, errData2)
@@ -58,8 +59,6 @@ function showDiv() {
 }
 
 function reply_click(orginal_clicked) {
-    var ref3 = database.ref("/quotetosales")
-    ref3.on("value", gotData3, errData3)
     var checked = 0;
     boxId = orginal_clicked;
 
@@ -71,8 +70,6 @@ function reply_click(orginal_clicked) {
         currentDates[boxId] = date;
         firebase.database().ref("sales/" + clicked_id).update(currentArray)
         firebase.database().ref("dates/" + clicked_id).update(currentDates)
-        var ref3 = database.ref("/quotetosales")
-        ref3.on("value", gotData3, errData3)
         if (boxId == "15") {
             getSalesNumber()
         }
@@ -91,8 +88,6 @@ function reply_click(orginal_clicked) {
             if (confirm.toLowerCase() == "yes") {
                 firebase.database().ref("sales/" + clicked_id).remove()
                 firebase.database().ref("quotetosales/" + clicked_id).remove()
-                var ref3 = database.ref("quotetosales/")
-                ref3.on("value", gotData3, errData3)
                 window.location.replace(window.location.pathname + window.location.search + window.location.hash);
             }
             else {
@@ -105,13 +100,10 @@ function reply_click(orginal_clicked) {
         showSales()
     }
     else if (($(document.getElementById(boxId)).prop("checked") == false)) {
-
         currentArray[boxId] = 0
         currentDates[boxId] = 0;
         firebase.database().ref("sales/" + clicked_id).update(currentArray)
         firebase.database().ref("dates/" + clicked_id).update(currentDates)
-        var ref3 = database.ref("/quotetosales")
-        ref3.on("value", gotData3, errData3)
         for (i = 0; currentArray.length > i; i++) {
             checked += currentArray[i];
         }
@@ -124,8 +116,6 @@ function reply_click(orginal_clicked) {
 
 function reply_click_2(clicked_id_2) {
     $("#header2").empty()
-    var ref3 = database.ref("/quotetosales")
-    ref3.on("value", gotData3, errData3)
     clicked_id = clicked_id_2;
     currentArray = allNums[clicked_id];
     currentDates = allDates[clicked_id]
@@ -157,8 +147,14 @@ function gotData(data) {
     for (var i = 0; keys.length > i; i++) {
         k = keys[i]
         var num = allNums[k]
-        $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:orange;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + k + '</button></center>');
+       
+        if (allQ2s[Skeys[i]] !== 0) {
+             $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:white;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + allQ2s[Skeys[i]] + '</button></center>');
+        }
+        else {
+            $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:orange;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + k+ '</button></center>');
 
+        }
     }
 }
 
@@ -181,19 +177,7 @@ function errData2(err) {
 
 function gotData3(data) {
     allQ2s = data.val()
-    var keys = Object.keys(allQ2s);
-    for (var i = 0; keys.length > i; i++) {
-        b = keys[i]
-        var Q2S = allQ2s[b]
-        if (Q2S !== 0) {
-            document.getElementById(b).innerHTML = Q2S;
-            document.getElementById(b).style.color = "white";
-        }
-        else {
-            document.getElementById(b).innerHTML = b;
-            document.getElementById(b).style.color = "orange";
-        }
-    }
+    Skeys = Object.keys(allQ2s);
 
 }
 
