@@ -44,6 +44,7 @@ function showSales() {
     var ref2 = database.ref("/dates")
     ref2.on("value", gotData2, errData2)
     ref.on("value", gotData, errData)
+
 }
 
 function showDiv() {
@@ -61,7 +62,6 @@ $(document).ready(function() {
 function reply_click(orginal_clicked) {
     var checked = 0;
     boxId = orginal_clicked;
-
     if (($(document.getElementById(boxId)).prop("checked") == true)) {
         currentArray[boxId] = 1
         if (boxId == "5") {
@@ -74,8 +74,6 @@ function reply_click(orginal_clicked) {
             getSalesNumber()
         }
         for (i = 0; currentArray.length > i; i++) {
-            showSales()
-            document.getElementById(i).checked = currentArray[i]
             checked += currentArray[i]
             if (currentDates[i] !== 0) {
                 document.getElementById(60 + i).innerHTML = currentDates[i];
@@ -99,7 +97,6 @@ function reply_click(orginal_clicked) {
 
 
         }
-        showSales()
     }
     else if (($(document.getElementById(boxId)).prop("checked") == false)) {
         currentArray[boxId] = 0
@@ -107,14 +104,17 @@ function reply_click(orginal_clicked) {
         firebase.database().ref("sales/" + clicked_id).update(currentArray)
         firebase.database().ref("dates/" + clicked_id).update(currentDates)
         for (i = 0; currentArray.length > i; i++) {
-            showSales()
-            document.getElementById(i).checked = currentArray[i]
             checked += currentArray[i];
         }
         $('#progBar').attr('value', (checked / 60) * 100);
 
-        showSales()
+        
 
+    }
+    
+    showSales()
+        for (var i = 0; currentArray.length > i; i++) {
+        document.getElementById(i).checked = currentArray[i]
     }
 }
 
@@ -151,12 +151,12 @@ function gotData(data) {
     for (var i = 0; keys.length > i; i++) {
         k = keys[i]
         var num = allNums[k]
-       
+
         if (allQ2s[Skeys[i]] !== 0) {
-             $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:white;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + allQ2s[Skeys[i]] + '</button></center>');
+            $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:white;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + allQ2s[Skeys[i]] + '</button></center>');
         }
         else {
-            $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:orange;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + k+ '</button></center>');
+            $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:orange;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + k + '</button></center>');
 
         }
     }
