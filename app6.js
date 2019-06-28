@@ -74,6 +74,7 @@ function reply_click(orginal_clicked) {
             getSalesNumber()
         }
         for (i = 0; currentArray.length > i; i++) {
+            showSales()
             document.getElementById(i).checked = currentArray[i]
             checked += currentArray[i]
             if (currentDates[i] !== 0) {
@@ -106,6 +107,7 @@ function reply_click(orginal_clicked) {
         firebase.database().ref("sales/" + clicked_id).update(currentArray)
         firebase.database().ref("dates/" + clicked_id).update(currentDates)
         for (i = 0; currentArray.length > i; i++) {
+            showSales()
             document.getElementById(i).checked = currentArray[i]
             checked += currentArray[i];
         }
