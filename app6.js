@@ -54,17 +54,9 @@ function showDiv() {
 }
 $(document).ready(function() {
     showSales()
-    for (var i = 0; currentArray.length > i; i++) {
-        document.getElementById(i).checked = currentArray[i]
-    }
 });
 
 function reply_click(orginal_clicked) {
-    firebase.database().ref("sales/" + clicked_id).set(currentArray)
-    firebase.database().ref("dates/" + clicked_id).set(currentDates)
-    for (var i = 0; currentArray.length > i; i++) {
-        document.getElementById(i).checked = currentArray[i]
-    }
     var checked = 0;
     boxId = orginal_clicked;
     if (($(document.getElementById(boxId)).prop("checked") == true)) {
@@ -116,7 +108,10 @@ function reply_click(orginal_clicked) {
 
 
     }
-
+    firebase.database().ref("sales/" + clicked_id).set(currentArray)
+    firebase.database().ref("dates/" + clicked_id).set(currentDates)
+     for (var i = 0; i < currentArray.length; i++) {
+        document.getElementById(i).checked = currentArray[i]}
 }
 
 function reply_click_2(clicked_id_2) {
