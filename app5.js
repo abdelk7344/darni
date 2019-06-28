@@ -14,21 +14,25 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
+$(document).ready(function() {
+    showSales()
+});
+
 var database = firebase.database();
 $(window).on("load", function(e) {
-   
+
     showSales()
     var today = new Date();
     date = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
     var ref3 = database.ref("/quotetosales")
     ref3.on("value", gotData3, errData3)
-    
+
 
 });
 
 function addSales() {
     var newsale = $("#newSaleNum").val();
-    if(newsale.length==0){
+    if (newsale.length == 0) {
         return
     }
     firebase.database().ref("sales/" + newsale).set([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -100,7 +104,7 @@ function reply_click(orginal_clicked) {
 
             }
 
-        
+
         }
         showSales()
     }
@@ -116,9 +120,9 @@ function reply_click(orginal_clicked) {
             checked += currentArray[i];
         }
         $('#progBar').attr('value', (checked / 60) * 100);
-        
+
         showSales()
-        
+
     }
 }
 
@@ -210,8 +214,8 @@ function assignLevel() {
             document.getElementById(i).checked = currentArray[i]
         }
     }
-    else if(level.toLowerCase()=="no"){
-        currentArray[5]=1
+    else if (level.toLowerCase() == "no") {
+        currentArray[5] = 1
     }
     else {
         alert("I did not understand what you have written down. Please try again.")
@@ -223,7 +227,7 @@ function getSalesNumber() {
     $("#header2").empty()
     $("#header").empty()
     var quotetosales = prompt("Please Enter the Sales Number");
-    if (quotetosales.length<25) {
+    if (quotetosales.length < 25) {
         firebase.database().ref("quotetosales/" + clicked_id).set(quotetosales)
         document.getElementById(clicked_id).innerHTML = quotetosales;
         document.getElementById(clicked_id).style.color = "white";
