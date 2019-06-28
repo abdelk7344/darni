@@ -23,9 +23,6 @@ $(window).on("load", function(e) {
 
 });
 
-$(document).ready(function() {
-    showSales()
-});
 
 
 function addSales() {
@@ -57,6 +54,9 @@ function showDiv() {
     }
     $('#progBar').attr('value', (checked / 60) * 100);
 }
+$(document).ready(function() {
+    showSales()
+});
 
 function reply_click(orginal_clicked) {
     var checked = 0;
@@ -74,6 +74,7 @@ function reply_click(orginal_clicked) {
             getSalesNumber()
         }
         for (i = 0; currentArray.length > i; i++) {
+            document.getElementById(i).checked = currentArray[i]
             checked += currentArray[i]
             if (currentDates[i] !== 0) {
                 document.getElementById(60 + i).innerHTML = currentDates[i];
@@ -105,6 +106,7 @@ function reply_click(orginal_clicked) {
         firebase.database().ref("sales/" + clicked_id).update(currentArray)
         firebase.database().ref("dates/" + clicked_id).update(currentDates)
         for (i = 0; currentArray.length > i; i++) {
+            document.getElementById(i).checked = currentArray[i]
             checked += currentArray[i];
         }
         $('#progBar').attr('value', (checked / 60) * 100);
