@@ -60,9 +60,11 @@ $(document).ready(function() {
 });
 
 function reply_click(orginal_clicked) {
-    showSales()
-    currentArray = allNums[clicked_id];
-    currentDates = allDates[clicked_id]
+    firebase.database().ref("sales/" + clicked_id).set(currentArray)
+    firebase.database().ref("dates/" + clicked_id).set(currentDates)
+    for (var i = 0; currentArray.length > i; i++) {
+        document.getElementById(i).checked = currentArray[i]
+    }
     var checked = 0;
     boxId = orginal_clicked;
     if (($(document.getElementById(boxId)).prop("checked") == true)) {
