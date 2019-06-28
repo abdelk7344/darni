@@ -60,6 +60,7 @@ $(document).ready(function() {
 });
 
 function reply_click(orginal_clicked) {
+    showSales()
     currentArray = allNums[clicked_id];
     currentDates = allDates[clicked_id]
     var checked = 0;
@@ -149,7 +150,7 @@ function gotData(data) {
     for (var i = 0; keys.length > i; i++) {
         k = keys[i]
         var num = allNums[k]
-
+        console.log(num)
         if (allQ2s[Skeys[i]] !== 0) {
             $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:white;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + allQ2s[Skeys[i]] + '</button></center>');
         }
