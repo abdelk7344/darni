@@ -20,21 +20,19 @@
     <!--CSS and Javascript sheet-->
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="config.js"></script>
-    <script src="app7.js"></script>
+    <script src="appf.js"></script>
     <style>
-        .label {
-            font-style: italic;
-        }
-
         .legend {
             background: grey;
         }
-        #header3{
-            text-align:center;
+
+        #header3 {
+            text-align: center;
+            font: bold 20px arial,serif
         }
     </style>
 </head>
-  
+
 <body>
     <center>
         <h1>Flow Up</h1>
@@ -69,72 +67,73 @@
     <div id="checklist1">
 
         <h4>Sales Review</h4>
-        <input onClick="reply_click(this.id)" type="checkbox" id="0" value="">Quote check</input><label id="62"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="1" value="">Customer PO check </input><label id="63"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="2" value="">DPAS Check </input><label id="64"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="3" value="">Check Credit Terms </input><label id="65"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="4" value="">Credit Check </input><label id="66"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="5" value="">Save documents to Quote folder </input><label id="67"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="6" value="">Send to Engineering </input><label id="68"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="0" value="">Quote check </input><label id="63"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="1" value="">Customer PO check </input><label id="64"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="2" value="">DPAS Check </input><label id="65"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="3" value="">Check Credit Terms </input><label id="66"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="4" value="">Credit Check </input><label id="67"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="5" value="">Save documents to Quote folder </input><label id="68"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="6" value="">Send to Engineering </input><label id="69"></label><br>
         <h4>PO Review</h4>
-        <input onClick="reply_click(this.id)" type="checkbox" id="7" value="">Assign Job Level </input><label id="69"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="8" value="">Customer drawing check </input><label id="70"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="9" value="">Customer PO check </input><label id="71"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="10" value="">Quality Notes/Clauses/QAPs review </input><label id="72"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="11" value="">Part ID Creation </input><label id="73"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="12" value="">Create "As Built Document Sheet" (Form ABC) </input><label id="74"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="13" value="">New prints saved to ISO drive </input><label id="75"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="14" value="">Check FAI production gap less than allowable at time of shipment </input><label id="76"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="15" value="">Save documents to Quote folder </input><label id="77"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="16" value="">Response sent to Sales for aknowledgement </input><label id="78"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="17" value="">SO created </input><label id="79"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="18" value="">Send order aknowledgement to customer </input><label id="80"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="19" value="">Distribute SO internally </input><label id="81"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="20" value="">Log job into spreadsheet </input><label id="82"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="7" value="">Assign Job Level </input><label id="70"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="8" value="">Customer drawing check </input><label id="71"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="9" value="">Customer PO check </input><label id="72"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="10" value="">Quality Notes/Clauses/QAPs review </input><label id="73"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="11" value="">Part ID Creation </input><label id="74"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="12" value="">Create "As Built Document Sheet" </input><label id="75"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="13" value="">New prints saved to ISO drive </input><label id="76"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="14" value="">Check FAI production gap less than allowable at time of shipment </input><label id="77"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="15" value="">Save documents to Quote folder </input><label id="78"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="16" value="">Response sent to Sales for aknowledgement </input><label id="79"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="17" value="">SO created </input><label id="80"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="18" value="">Send order aknowledgement to customer </input><label id="81"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="19" value="">Distribute SO internally </input><label id="82"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="20" value="">Log job into spreadsheet </input><label id="83"></label><br>
         <h4>Engineering Review</h4>
-        <input onClick="reply_click(this.id)" type="checkbox" id="21" value="">Create top level drawing(s) </input><label id="83"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="22" value="">Create Sub-level Part ID(s) </input><label id="84"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="23" value="">Create Sub-level drawing(s) </input><label id="85"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="24" value="">Define process </input><label id="86"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="25" value="">Create EM first draft </input><label id="87"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="26" value="">Review process with MFG </input><label id="88"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="27" value="">Design tooling </input><label id="89"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="28" value="">Tooling work order(s)/purchase order(s) made </input><label id="90"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="29" value="">SDS and Expiry check </input><label id="91"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="30" value="">Finalize EM & Inform Production Control </input><label id="92"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="21" value="">Create top level drawing(s) </input><label id="84"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="22" value="">Create Sub-level Part ID(s) </input><label id="85"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="23" value="">Create Sub-level drawing(s) </input><label id="86"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="24" value="">Define process </input><label id="87"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="25" value="">Create EM first draft </input><label id="88"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="26" value="">Review process with MFG </input><label id="89"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="27" value="">Design tooling </input><label id="90"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="28" value="">Tooling work order(s)/purchase order(s) made </input><label id="91"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="29" value="">SDS and Expiry check </input><label id="92"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="30" value="">Apply QAP flow downs to part ID </input><label id="93"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="31" value="">Finalize EM & Inform Production Control </input><label id="94"></label><br>
         <h4>QA Review</h4>
-        <input onClick="reply_click(this.id)" type="checkbox" id="31" value="">Customer drawing check </input><label id="93"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="32" value="">Review top level drawing(s) against customer </input><label id="94"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="33" value="">Review Sub-level drawing(s) against top level </input><label id="95"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="34" value="">Create Sub-level bubble drawing(s) </input><label id="96"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="35" value="">Create top level bubble drawing(s) </input><label id="97"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="36" value="">Create customer bubble drawing(s) with specification outline </input><label id="98"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="37" value="">Review EM first draft </input><label id="99"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="38" value="">FAIR check </input><label id="100"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="39" value="">Witness Sample requirements identified </input><label id="101"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="40" value="">Create Quality Plan (form XYZ) </input><label id="102"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="41" value="">Update QA Data For Shipment.xls for this SO </input><label id="103"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="42" value="">Check inspection tools </input><label id="104"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="43" value="">Document retention plan created </input><label id="105"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="44" value="">Create inspection forms </input><label id="106"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="45" value="">Check NC log for defects previously </input><label id="107"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="32" value="">Customer drawing check </input><label id="95"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="33" value="">Review top level drawing(s) against customer </input><label id="96"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="34" value="">Review Sub-level drawing(s) against top level </input><label id="97"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="35" value="">Create Sub-level bubble drawing(s) </input><label id="98"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="36" value="">Create top level bubble drawing(s) </input><label id="99"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="37" value="">Create customer bubble drawing(s) with specification outline </input><label id="100"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="38" value="">Review EM first draft </input><label id="101"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="39" value="">FAIR check </input><label id="102"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="40" value="">Witness Sample requirements identified </input><label id="103"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="41" value="">Create Quality Plan </input><label id="104"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="42" value="">Update QA Data For Shipment.xls for this SO </input><label id="105"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="43" value="">Check inspection tools </input><label id="106"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="44" value="">Document retention plan created </input><label id="107"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="45" value="">Create inspection forms </input><label id="108"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="46" value="">Check NC log for defects previously </input><label id="109"></label><br>
         <h4>Procurement</h4>
-        <input onClick="reply_click(this.id)" type="checkbox" id="46" value="">WO Firmed </input><label id="108"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="47" value="">Verify exception report against MRP </input><label id="109"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="48" value="">Create purchase reqs and consolodate by vendor </input><label id="110"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="49" value="">Raw mtl/substrate/blank vendors selected </input><label id="111"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="50" value="">Send RFQs </input><label id="112"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="51" value="">Place PO for RM/SC/GL/BK </input><label id="113"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="52" value="">Place PO for ZZ/ZP/ZE </input><label id="114"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="53" value="">Witness Samples ordered </input><label id="115"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="54" value="">Tooling work order(s)/purchase order(s) made </input><label id="116"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="55" value="">Supplier follow up made and info in MRP updated </input><label id="117"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="56" value="">Reciept of RM/SC/GL/BK </input><label id="118"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="57" value="">Reciept of ZZ/ZP/ZE </input><label id="119"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="58" value="">Reciept of Witness Samples </input><label id="120"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="59" value="">Incoming inspection of RM/SC/GL/BK </input><label id="121"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="60" value="">Incoming inspection of ZZ/ZP/ZE </input><label id="122"></label><br>
-        <input onClick="reply_click(this.id)" type="checkbox" id="61" value="">Incoming inspection of Witness Samples </input><label id="123"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="47" value="">WO Firmed </input><label id="110"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="48" value="">Verify exception report against MRP </input><label id="111"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="49" value="">Create purchase reqs and consolodate by vendor </input><label id="112"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="50" value="">Raw mtl/substrate/blank vendors selected </input><label id="113"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="51" value="">Send RFQs </input><label id="114"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="52" value="">Place PO for RM/SC/GL/BK </input><label id="115"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="53" value="">Place PO for ZZ/ZP/ZE </input><label id="116"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="54" value="">Witness Samples ordered </input><label id="117"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="55" value="">Tooling work order(s)/purchase order(s) made </input><label id="118"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="56" value="">Supplier follow up made and info in MRP updated </input><label id="119"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="57" value="">Reciept of RM/SC/GL/BK </input><label id="120"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="58" value="">Reciept of ZZ/ZP/ZE </input><label id="121"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="59" value="">Reciept of Witness Samples </input><label id="122"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="60" value="">Incoming inspection of RM/SC/GL/BK </input><label id="123"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="61" value="">Incoming inspection of ZZ/ZP/ZE </input><label id="124"></label><br>
+        <input onClick="reply_click(this.id)" type="checkbox" id="62" value="">Incoming inspection of Witness Samples </input><label id="125"></label><br>
 
     </div>
 

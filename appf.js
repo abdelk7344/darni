@@ -1,4 +1,4 @@
-var allNums, Skeys, onesect, k, a, b, currentQ2S, boxId, currentArray, orderId, clicked_id, date, currentDates, allDates, firebase, allQ2s;
+var allNums, Skeys, onesect, k, a, b, currentQ2S, boxId, currentArray, orderId, clicked_id, date, currentDates, allDates, firebase, allQ2s, alldpas, Dkeys;
 // var apikey = config.API_KEY;
 
 // Your web app's Firebase configuration
@@ -27,16 +27,18 @@ function addSales() {
     if (newsale.length == 0) {
         return
     }
-    firebase.database().ref("sales/" + newsale).set([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    firebase.database().ref("dates/" + newsale).set([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    firebase.database().ref("sales/" + newsale).set([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    firebase.database().ref("dates/" + newsale).set([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     firebase.database().ref("quotetosales/" + newsale).set(0)
-    console.log(newsale)
+    firebase.database().ref("dpas/" + newsale).set("")
     showSales()
 }
 
 function showSales() {
     var ref3 = database.ref("/quotetosales")
     ref3.on("value", gotData3, errData3)
+    var ref4 = database.ref("/dpas")
+    ref4.on("value", gotData4, errData4)
     var ref = database.ref("/sales");
     var ref2 = database.ref("/dates")
     ref2.on("value", gotData2, errData2)
@@ -50,7 +52,7 @@ function showDiv() {
     for (i = 0; currentArray.length > i; i++) {
         checked += currentArray[i]
     }
-    $('#progBar').attr('value', (checked / 62) * 100);
+    $('#progBar').attr('value', (checked / 63) * 100);
 }
 $(document).ready(function() {
     showSales()
@@ -67,6 +69,9 @@ function reply_click(orginal_clicked) {
         else if (boxId == "2") {
             dpasCheck()
         }
+        else if (boxId == "3") {
+            creditCheck()
+        }
         currentDates[boxId] = date;
         firebase.database().ref("sales/" + clicked_id).set(currentArray)
         firebase.database().ref("dates/" + clicked_id).set(currentDates)
@@ -76,18 +81,18 @@ function reply_click(orginal_clicked) {
         for (i = 0; currentArray.length > i; i++) {
             checked += currentArray[i]
             if (currentDates[i] !== 0) {
-                document.getElementById(62 + i).innerHTML = currentDates[i];
-                document.getElementById(62 + i).style.fontStyle = "italic";
+                document.getElementById(63 + i).innerHTML = currentDates[i];
+                document.getElementById(63 + i).style.font = "italic bold 15px arial,serif";
             }
         }
-        $(document.getElementById('progBar')).attr('value', (checked / 62) * 100);
-        console.log("sales/" + clicked_id)
-        if (checked == 62) {
-            console.log("delete")
+        $(document.getElementById('progBar')).attr('value', (checked / 63) * 100);
+        
+        if (checked == 63) {
             var confirm = prompt("Are you DONE with this order?! Type yes or no");
             if (confirm.toLowerCase() == "yes") {
                 firebase.database().ref("sales/" + clicked_id).remove()
                 firebase.database().ref("quotetosales/" + clicked_id).remove()
+                firebase.database().ref("dpas/" + clicked_id).remove()
                 window.location.replace(window.location.pathname + window.location.search + window.location.hash);
                 return
             }
@@ -107,7 +112,7 @@ function reply_click(orginal_clicked) {
         for (i = 0; currentArray.length > i; i++) {
             checked += currentArray[i];
         }
-        $('#progBar').attr('value', (checked / 62) * 100);
+        $('#progBar').attr('value', (checked / 63) * 100);
 
 
 
@@ -121,10 +126,14 @@ function reply_click(orginal_clicked) {
 
 function reply_click_2(clicked_id_2) {
     $("#header2").empty()
+    $("#header3").empty()
     clicked_id = clicked_id_2;
     currentArray = allNums[clicked_id];
     currentDates = allDates[clicked_id]
     currentQ2S = allQ2s[clicked_id]
+    if (alldpas[clicked_id] !== "") {
+        $("#header3").text(alldpas[clicked_id].toUpperCase());
+    }
     if (currentQ2S !== 0) {
         document.getElementById(clicked_id).innerHTML = currentQ2S;
         $("#header2").text('You are currently viewing quote order ' + clicked_id);
@@ -136,13 +145,15 @@ function reply_click_2(clicked_id_2) {
     for (var i = 0; i < currentArray.length; i++) {
         document.getElementById(i).checked = currentArray[i]
         if (currentDates[i] !== 0) {
-            document.getElementById(62 + i).innerHTML = currentDates[i];
-            document.getElementById(62 + i).style.fontStyle = "italic";
+            document.getElementById(63 + i).innerHTML = currentDates[i];
+            document.getElementById(63 + i).style.font = "italic bold 15px arial,serif";
         }
         else {
-            document.getElementById(62 + i).innerHTML = "";
+            document.getElementById(63 + i).innerHTML=""
         }
     }
+
+
 }
 
 function gotData(data) {
@@ -154,6 +165,7 @@ function gotData(data) {
         var num = allNums[k]
         if (allQ2s[Skeys[i]] !== 0) {
             $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:white;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + allQ2s[Skeys[i]] + '</button></center>');
+
         }
         else {
             $("#container").append('<center><button style="float: left;  margin-left: 30px; margin-top:30px;color:orange;" id="' + k + '" type="button" class="btn btn-secondary" onclick="reply_click_2(this.id);showDiv();">' + k + '</button></center>');
@@ -189,10 +201,19 @@ function errData3(err) {
     console.log(err)
 }
 
+function gotData4(data) {
+    alldpas = data.val()
+    Dkeys = Object.keys(alldpas);
+}
+
+function errData4(err) {
+    console.log(err)
+}
+
 function assignLevel() {
     var level = prompt("Is this job level 1? Please enter yes or no.");
     if (level.toLowerCase() == "yes") {
-        for (var i = 7; i < 47; i++) {
+        for (var i = 7; i < 48; i++) {
             currentArray[i] = 1
             currentDates[i] = "N/A"
             document.getElementById(i).checked = currentArray[i]
@@ -236,6 +257,15 @@ function dpasCheck() {
     }
     else {
         $("#header3").text("");
+    }
+
+}
+
+function creditCheck() {
+    var creditC = prompt("Enter yes if credit check required.")
+    if (creditC.toLowerCase() !== "yes") {
+        currentArray["4"] = 1;
+        currentDates["4"] = "N/A"
     }
 
 }

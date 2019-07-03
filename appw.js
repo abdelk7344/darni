@@ -19,30 +19,34 @@ $(document).ready(function() {
 
 
 function showSales() {
-    var ref = database.ref("/sales");
+    var ref2 = database.ref("/quotetosales")
+    ref2.on("value", gotData2, errData2)
+    var ref = database.ref("sales/");
     ref.on("value", gotData, errData)
-
 
 }
 
 function gotData(data) {
     $('.block').remove();
-
+    console.log(allQ2s)
+    console.log(Skeys)
+    console.log()
     var allNums = data.val();
-    var keys = Object.keys(allNums)
+    var keys = Object.keys(allNums);
 
     for (var i = 0; keys.length > i; i++) {
         var k = keys[i]
         var num = allNums[k]
-       
-       
         var sr = ((num[0] + num[1] + num[2] + num[3] + num[4] + num[5] + num[6]) / num.length) * 500
         var pr = ((num[7] + num[8] + num[9] + num[10] + num[11] + num[12] + num[13] + num[14] + num[15] + num[16] + num[17] + num[18] + num[19] + num[20]) / num.length) * 500
-        var er = ((num[21] + num[22] + num[23] + num[24] + num[25] + num[26] + num[27] + num[28] + num[29] + num[30]) / num.length) * 500
-        var qr = ((num[31] + num[32] + num[33] + num[34] + num[35] + num[36] + num[37] + num[38] + num[39] + num[40] + num[41] + num[42] + num[43] + num[44] + num[45]) / num.length) * 500
-        var p = ((num[46] + num[47] + num[48] + num[49] + num[50] + num[51] + num[52] + num[53] + num[54] + num[55] + num[56] + num[57] + num[58] + num[59] + num[60] + num[61]) / num.length) * 500
-       
-       
+        var er = ((num[21] + num[22] + num[23] + num[24] + num[25] + num[26] + num[27] + num[28] + num[29] + num[30] + num[31]) / num.length) * 500
+        var qr = ((num[32] + num[33] + num[34] + num[35] + num[36] + num[37] + num[38] + num[39] + num[40] + num[41] + num[42] + num[43] + num[44] + num[45] + num[46]) / num.length) * 500
+        var p = ((num[47] + num[48] + num[49] + num[50] + num[51] + num[52] + num[53] + num[54] + num[55] + num[56] + num[57] + num[58] + num[59] + num[60] + num[61] + num[62]) / num.length) * 500
+        // console.log(sr)
+        // console.log(pr)
+        // console.log(er)
+        // console.log(qr)
+        // console.log(p)
         var mother = document.createElement('div');
         mother.id = 'block';
         mother.className = 'block';
@@ -51,7 +55,12 @@ function gotData(data) {
 
 
         var name = document.createElement('p');
-        name.innerHTML = "quote: " + k;
+        if (allQ2s[Skeys[i]] !== 0) {
+            name.innerHTML = allQ2s[Skeys[i]];
+        }
+        else {
+            name.innerHTML = "Q" + k;
+        }
         name.className = 'move'
 
 
@@ -60,7 +69,7 @@ function gotData(data) {
         innerDiv1.className = 'block-2';
         innerDiv1.classList.add("progressbar")
         $(innerDiv1).attr('aria-valuenow', sr).css('width', sr);
-        if (sr > 41.61) {
+        if (sr > 55) {
             innerDiv1.style.backgroundColor = "#D3D3D3"
         }
         else {
@@ -73,7 +82,7 @@ function gotData(data) {
         innerDiv2.className = 'block-2';
         innerDiv2.classList.add("progress-bar")
         $(innerDiv2).attr('aria-valuenow', sr).css('width', pr);
-        if (pr > 116.61) {
+        if (pr > 111) {
             innerDiv2.style.backgroundColor = "#D3D3D3"
         }
         else {
@@ -86,7 +95,7 @@ function gotData(data) {
         innerDiv3.className = 'block-2';
         innerDiv3.classList.add("progress-bar")
         $(innerDiv3).attr('aria-valuenow', sr).css('width', er);
-        if (er > 83.31) {
+        if (er > 87) {
             innerDiv3.style.backgroundColor = "#D3D3D3"
         }
         else {
@@ -99,7 +108,7 @@ function gotData(data) {
         innerDiv4.className = 'block-2';
         innerDiv4.classList.add("progress-bar")
         $(innerDiv4).attr('aria-valuenow', sr).css('width', qr);
-        if (qr == 125) {
+        if (qr > 119) {
             innerDiv4.style.backgroundColor = "#D3D3D3"
         }
         else {
@@ -112,7 +121,7 @@ function gotData(data) {
         innerDiv5.className = 'block-2';
         innerDiv5.classList.add("progressbar")
         $(innerDiv5).attr('aria-valuenow', sr).css('width', p);
-        if (p > 133.31) {
+        if (p > 126.5) {
             innerDiv5.style.backgroundColor = "#D3D3D3"
         }
         else {
@@ -131,5 +140,15 @@ function gotData(data) {
 }
 
 function errData(err) {
+    console.log(err)
+}
+
+function gotData2(data) {
+    allQ2s = data.val()
+    Skeys = Object.keys(allQ2s);
+
+}
+
+function errData2(err) {
     console.log(err)
 }
